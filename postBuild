@@ -3,6 +3,12 @@ set -e
 export PATH="$PATH:/home/jovyan/.dotnet/tools"
 export DOTNET_ROOT="/srv/conda/envs/notebook/lib/dotnet/"
 
+# Persist environment var changes.
+cat <<EOF >> /home/jovyan/.bashrc
+export PATH="\$PATH:/home/jovyan/.dotnet/tools"
+export DOTNET_ROOT="/srv/conda/envs/notebook/lib/dotnet/"
+EOF
+
 echo "## Installing PowerShell notebook support. ##"
 
 /srv/conda/envs/notebook/lib/dotnet/dotnet tool install -g PowerShell
